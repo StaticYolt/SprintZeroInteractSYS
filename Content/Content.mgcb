@@ -25,3 +25,8 @@
 /processorParam:TextureFormat=Color
 /build:EzaelSpriteSheet.png
 
+#begin EzaelLeft.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:EzaelLeft.png
+

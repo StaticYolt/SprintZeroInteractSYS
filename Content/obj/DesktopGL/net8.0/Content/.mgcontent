@@ -5,8 +5,10 @@
   <Config />
   <SourceFiles>
     <File>/Users/leocheng/Documents/Ohio State University/SP2025/INT CSE 3902/MonoGame Projects/SprintZero/Content/EzaelSpriteSheet.png</File>
+    <File>/Users/leocheng/Documents/Ohio State University/SP2025/INT CSE 3902/MonoGame Projects/SprintZero/Content/EzaelLeft.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>

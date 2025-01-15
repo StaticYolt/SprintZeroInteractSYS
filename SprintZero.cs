@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using SprintZero.ConcreteClasses;
 using System;
-using TextureAtlas;
 using System.Collections.Generic;
 
 namespace SprintZero;
@@ -16,7 +15,6 @@ public class SprintZero : Game
     private KeyboardController keyboardController;
     private MouseController mouseController;
 
-    // private int screenWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
     private int screenWidth;
     private int screenHeight;
     public SprintZero()
@@ -53,8 +51,8 @@ public class SprintZero : Game
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
         // TODO: use this.Content to load your game content here
-        Texture2D ezealTexture = Content.Load<Texture2D>("EzaelSpriteSheet");
-        ezaelSprite = new AnimatedSprite(ezealTexture, 8, 8);
+        Texture2D ezealTexture = Content.Load<Texture2D>("EzaelLeft");
+        ezaelSprite = new AnimatedSprite(ezealTexture, 1, 4, .1f);
     }
 
     protected override void Update(GameTime gameTime)
@@ -63,7 +61,7 @@ public class SprintZero : Game
             Exit();
 
         // TODO: Add your update logic here
-        ezaelSprite.Update();
+        ezaelSprite.Update(gameTime);
         keyboardController.Update();
         mouseController.Update();
         base.Update(gameTime);
@@ -74,7 +72,7 @@ public class SprintZero : Game
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
         // TODO: Add your drawing code here
-        ezaelSprite.Draw(_spriteBatch, new Vector2(400, 200));
+        ezaelSprite.Draw(_spriteBatch, new Vector2(100, 100));
         base.Draw(gameTime);
     }
 

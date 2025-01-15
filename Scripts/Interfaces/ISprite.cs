@@ -5,9 +5,10 @@ namespace SprintZero.Interfaces
 {
     public interface ISprite
     {
-        public Texture2D _texture { get; set; }
-        public void Update();
+        public Texture2D Texture { get; set; }
+        public void Update(GameTime gameTime);
         public void Draw(SpriteBatch spriteBatch, Vector2 location);
     }
+    
 }
 //public List<Rectangle> _sourceRectangles { get; set; }
