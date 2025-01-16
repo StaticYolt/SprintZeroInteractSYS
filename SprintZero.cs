@@ -17,24 +17,6 @@ public class SprintZero : Game
     private int screenWidth;
     private int screenHeight;
     private Player player;
-    private AnimatedSprite ezaelLeftSprite;
-    private AnimatedSprite ezaelRightSprite;
-    private StaticSprite ezaelStillForwardSprite;
-    
-    private float leftRightTimerMax = 2f;
-    private float leftRightTimer = 2f;
-    private bool leftRightShouldMoveRight = true;
-
-    private float upDownTimerMax = 2f;
-    private float upDownTimer = 2f;
-    private bool upDownShouldMoveUp = true;
-    
-    enum PlayerState {
-        idle,
-        moveLeftRight,
-        moveUpDown
-    }
-    private PlayerState state;
 
     private SpriteFont font;
 
@@ -65,64 +47,18 @@ public class SprintZero : Game
             {new Rectangle(screenWidth / 2, screenHeight / 2, screenWidth / 2, screenHeight / 2), new Action(MovingAnimated)}
         });
 
-        
+        player = new Player(this, Vector2.Zero);
         base.Initialize();
     }
 
     protected override void LoadContent()
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
-
-        // TODO: use this.Content to load your game content here
-        Texture2D ezealLTexture = Content.Load<Texture2D>("EzaelLeft");
-        ezaelLeftSprite = new AnimatedSprite(ezealLTexture, 1, 4, .1f);
-
-        Texture2D ezealRTexture = Content.Load<Texture2D>("EzaelRight");
-        ezaelRightSprite = new AnimatedSprite(ezealRTexture, 1, 4, .1f);
-        
-        Texture2D ezaelStillForwardTexture = Content.Load<Texture2D>("EzaelStillForwards");
-        ezaelStillForwardSprite = new StaticSprite(ezaelStillForwardTexture);
-
-        player = new Player(ezaelStillForwardSprite, .5f);
         font = Content.Load<SpriteFont>("Fonts/arial");
     }
 
     protected override void Update(GameTime gameTime)
     {
-        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-            Exit();
-
-        // TODO: Add your update logic here
-        switch(state) {
-            case PlayerState.idle:
-                break;
-            case PlayerState.moveLeftRight:
-                leftRightTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-                if(leftRightTimer <= 0) {
-                    leftRightTimer = leftRightTimerMax;
-                    leftRightShouldMoveRight = !leftRightShouldMoveRight;
-                }
-                if(leftRightShouldMoveRight) {
-                    player.MoveRight();
-                }
-                else {
-                    player.MoveLeft();
-                }
-                break;
-            case PlayerState.moveUpDown:
-                upDownTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-                if(upDownTimer <= 0) {
-                    upDownTimer = upDownTimerMax;
-                    upDownShouldMoveUp = !upDownShouldMoveUp;
-                }
-                if(upDownShouldMoveUp) {
-                    player.MoveUp();
-                }
-                else {
-                    player.MoveDown();
-                }
-                break;
-        }
         player.Update(gameTime);
         keyboardController.Update();
         mouseController.Update();
@@ -144,24 +80,20 @@ public class SprintZero : Game
     }
 
     public void NonMovingNonAnimated() {
-        state = PlayerState.idle;
-        player.SetSprite(ezaelStillForwardSprite);
+        player.NonMovingNonAnimatedSprite();
         player.Reset();
         
     }
     public void NonMovingAnimated() {
-        state = PlayerState.idle;
-        player.SetSprite(ezaelRightSprite);
+        player.NonMovingAnimatedSprite();
         player.Reset();
     }
     public void MovingNonAnimated() {
-        state = PlayerState.moveUpDown;
-        player.SetSprite(ezaelStillForwardSprite);
+        player.MovingNonAnimatedSprite();
         player.Reset();
     }
     public void MovingAnimated() {
-        state = PlayerState.moveLeftRight;
-        player.SetSprite(ezaelLeftSprite);
+        player.MovingAnimatedSprite();
         player.Reset();
     }
     public void QuitGame() {
