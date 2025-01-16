@@ -23,24 +23,6 @@ namespace SprintZero.ConcreteClasses
         }
         public void Update(GameTime gameTime) {
             sprite.Update(gameTime);
-            // switch(state) {
-            //     case playerState.idle:
-            //         break;
-            //     case playerState.movingLeftRight:
-            //         moveTimeCont -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-            //         if(moveTimeCont <= 0) {
-            //             moveTimeCont = moveTimeContMax;
-            //             shouldMoveRight = !shouldMoveRight;
-            //         }
-            //         Console.WriteLine(shouldMoveRight);
-            //         if(shouldMoveRight) {
-            //             MoveRight();
-            //         }
-            //         else {
-            //             MoveLeft();
-            //         }
-            //         break;
-            // }
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 location) {
             sprite.Draw(spriteBatch, location + position);
@@ -57,15 +39,12 @@ namespace SprintZero.ConcreteClasses
         public void MoveDown() {
             position.Y += (float)_speed;
         }
-//* _gameTime.ElapsedGameTime.TotalSeconds)
         public void Reset() {
             position = new Vector2(0, 0);
         }
-
         public void SetSprite(ISprite sprite) {
             this.sprite = sprite;
         }
-        //might want to have the player class itself handle movement instead of having outside stuff call methods to deal with it.
     }
     
 }

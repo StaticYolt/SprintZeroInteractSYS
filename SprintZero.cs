@@ -49,19 +49,20 @@ public class SprintZero : Game
     {
         // TODO: Add your initialization logic here
         keyboardController = new KeyboardController(new Dictionary<object, Delegate> {
-            { Keys.W, new Action(actionOne)},
-            { Keys.A, new Action(actionTwo)},
-            { Keys.S, new Action(actionThree)},
-            { Keys.D, new Action(actionFour)}
+            { Keys.D0, new Action(QuitGame)},
+            { Keys.D1, new Action(NonMovingNonAnimated)},
+            { Keys.D2, new Action(NonMovingAnimated)},
+            { Keys.D3, new Action(MovingNonAnimated)},
+            { Keys.D4, new Action(MovingAnimated)}
         });
         screenWidth = 800;
         screenHeight = 400;
 
         mouseController = new MouseController(new Dictionary<object, Delegate> {
-            {new Rectangle(0, 0, screenWidth / 2, screenHeight / 2), new Action(actionOne)},
-            {new Rectangle(screenWidth / 2, 0, screenWidth / 2, screenHeight / 2), new Action(actionTwo)},
-            {new Rectangle(0, screenHeight / 2, screenWidth / 2, screenHeight / 2), new Action(actionThree)},
-            {new Rectangle(screenWidth / 2, screenHeight / 2, screenWidth / 2, screenHeight / 2), new Action(actionFour)}
+            {new Rectangle(0, 0, screenWidth / 2, screenHeight / 2), new Action(NonMovingNonAnimated)},
+            {new Rectangle(screenWidth / 2, 0, screenWidth / 2, screenHeight / 2), new Action(NonMovingAnimated)},
+            {new Rectangle(0, screenHeight / 2, screenWidth / 2, screenHeight / 2), new Action(MovingNonAnimated)},
+            {new Rectangle(screenWidth / 2, screenHeight / 2, screenWidth / 2, screenHeight / 2), new Action(MovingAnimated)}
         });
 
         
@@ -142,25 +143,28 @@ public class SprintZero : Game
         base.Draw(gameTime);
     }
 
-    public void actionOne() {
+    public void NonMovingNonAnimated() {
         state = PlayerState.idle;
         player.SetSprite(ezaelStillForwardSprite);
         player.Reset();
         
     }
-    public void actionTwo() {
+    public void NonMovingAnimated() {
         state = PlayerState.idle;
         player.SetSprite(ezaelRightSprite);
         player.Reset();
     }
-    public void actionThree() {
+    public void MovingNonAnimated() {
         state = PlayerState.moveUpDown;
         player.SetSprite(ezaelStillForwardSprite);
         player.Reset();
     }
-    public void actionFour() {
+    public void MovingAnimated() {
         state = PlayerState.moveLeftRight;
         player.SetSprite(ezaelLeftSprite);
         player.Reset();
+    }
+    public void QuitGame() {
+        Exit();
     }
 }

@@ -1,0 +1,18 @@
+switch(state) {
+    case playerState.idle:
+        break;
+    case playerState.movingLeftRight:
+        moveTimeCont -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+        if(moveTimeCont <= 0) {
+            moveTimeCont = moveTimeContMax;
+            shouldMoveRight = !shouldMoveRight;
+        }
+        Console.WriteLine(shouldMoveRight);
+        if(shouldMoveRight) {
+            MoveRight();
+        }
+        else {
+            MoveLeft();
+        }
+        break;
+}

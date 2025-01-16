@@ -11,4 +11,3 @@ namespace SprintZero.Interfaces
     }
     
 }
-//public List<Rectangle> _sourceRectangles { get; set; }
