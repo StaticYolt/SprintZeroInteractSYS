@@ -30,3 +30,23 @@
 /processor:TextureProcessor
 /build:EzaelLeft.png
 
+#begin EzaelStillForwards.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:EzaelStillForwards.png
+
+#begin EzaelShootDown.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:EzaelShootDown.png
+
+#begin EzaelRight.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:EzaelRight.png
+
+#begin Fonts/arial.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/build:Fonts/arial.spritefont
+

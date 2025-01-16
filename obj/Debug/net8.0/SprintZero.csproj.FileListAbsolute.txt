@@ -26,3 +26,7 @@
 /Users/leocheng/Documents/Ohio State University/SP2025/INT CSE 3902/MonoGame Projects/SprintZero/obj/Debug/net8.0/ref/SprintZero.dll
 /Users/leocheng/Documents/Ohio State University/SP2025/INT CSE 3902/MonoGame Projects/SprintZero/obj/Debug/net8.0/SprintZero.sourcelink.json
 /Users/leocheng/Documents/Ohio State University/SP2025/INT CSE 3902/MonoGame Projects/SprintZero/bin/Debug/net8.0/Content/EzaelLeft.xnb
+/Users/leocheng/Documents/Ohio State University/SP2025/INT CSE 3902/MonoGame Projects/SprintZero/bin/Debug/net8.0/Content/EzaelRight.xnb
+/Users/leocheng/Documents/Ohio State University/SP2025/INT CSE 3902/MonoGame Projects/SprintZero/bin/Debug/net8.0/Content/EzaelShootDown.xnb
+/Users/leocheng/Documents/Ohio State University/SP2025/INT CSE 3902/MonoGame Projects/SprintZero/bin/Debug/net8.0/Content/EzaelStillForwards.xnb
+/Users/leocheng/Documents/Ohio State University/SP2025/INT CSE 3902/MonoGame Projects/SprintZero/bin/Debug/net8.0/Content/Fonts/arial.xnb

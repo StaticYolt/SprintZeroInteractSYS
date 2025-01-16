@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using SprintZero.ConcreteClasses;
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace SprintZero;
 
@@ -11,12 +12,32 @@ public class SprintZero : Game
 {
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
-    private AnimatedSprite ezaelSprite;
     private KeyboardController keyboardController;
     private MouseController mouseController;
-
     private int screenWidth;
     private int screenHeight;
+    private Player player;
+    private AnimatedSprite ezaelLeftSprite;
+    private AnimatedSprite ezaelRightSprite;
+    private StaticSprite ezaelStillForwardSprite;
+    
+    private float leftRightTimerMax = 2f;
+    private float leftRightTimer = 2f;
+    private bool leftRightShouldMoveRight = true;
+
+    private float upDownTimerMax = 2f;
+    private float upDownTimer = 2f;
+    private bool upDownShouldMoveUp = true;
+    
+    enum PlayerState {
+        idle,
+        moveLeftRight,
+        moveUpDown
+    }
+    private PlayerState state;
+
+    private SpriteFont font;
+
     public SprintZero()
     {
         _graphics = new GraphicsDeviceManager(this);
@@ -42,6 +63,7 @@ public class SprintZero : Game
             {new Rectangle(0, screenHeight / 2, screenWidth / 2, screenHeight / 2), new Action(actionThree)},
             {new Rectangle(screenWidth / 2, screenHeight / 2, screenWidth / 2, screenHeight / 2), new Action(actionFour)}
         });
+
         
         base.Initialize();
     }
@@ -51,8 +73,17 @@ public class SprintZero : Game
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
         // TODO: use this.Content to load your game content here
-        Texture2D ezealTexture = Content.Load<Texture2D>("EzaelLeft");
-        ezaelSprite = new AnimatedSprite(ezealTexture, 1, 4, .1f);
+        Texture2D ezealLTexture = Content.Load<Texture2D>("EzaelLeft");
+        ezaelLeftSprite = new AnimatedSprite(ezealLTexture, 1, 4, .1f);
+
+        Texture2D ezealRTexture = Content.Load<Texture2D>("EzaelRight");
+        ezaelRightSprite = new AnimatedSprite(ezealRTexture, 1, 4, .1f);
+        
+        Texture2D ezaelStillForwardTexture = Content.Load<Texture2D>("EzaelStillForwards");
+        ezaelStillForwardSprite = new StaticSprite(ezaelStillForwardTexture);
+
+        player = new Player(ezaelStillForwardSprite, .5f);
+        font = Content.Load<SpriteFont>("Fonts/arial");
     }
 
     protected override void Update(GameTime gameTime)
@@ -61,9 +92,41 @@ public class SprintZero : Game
             Exit();
 
         // TODO: Add your update logic here
-        ezaelSprite.Update(gameTime);
+        switch(state) {
+            case PlayerState.idle:
+                break;
+            case PlayerState.moveLeftRight:
+                leftRightTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if(leftRightTimer <= 0) {
+                    leftRightTimer = leftRightTimerMax;
+                    leftRightShouldMoveRight = !leftRightShouldMoveRight;
+                }
+                if(leftRightShouldMoveRight) {
+                    player.MoveRight();
+                }
+                else {
+                    player.MoveLeft();
+                }
+                break;
+            case PlayerState.moveUpDown:
+                upDownTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if(upDownTimer <= 0) {
+                    upDownTimer = upDownTimerMax;
+                    upDownShouldMoveUp = !upDownShouldMoveUp;
+                }
+                if(upDownShouldMoveUp) {
+                    player.MoveUp();
+                }
+                else {
+                    player.MoveDown();
+                }
+                break;
+        }
+        player.Update(gameTime);
         keyboardController.Update();
         mouseController.Update();
+
+
         base.Update(gameTime);
     }
 
@@ -72,20 +135,32 @@ public class SprintZero : Game
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
         // TODO: Add your drawing code here
-        ezaelSprite.Draw(_spriteBatch, new Vector2(100, 100));
+        player.Draw(_spriteBatch, new Vector2(screenWidth / 2 - 64 , screenHeight / 2 - 32));
+        _spriteBatch.Begin();
+        _spriteBatch.DrawString(font, "Credits\nProgram Made By: Leo Cheng\nSprites from: Leo Cheng", new Vector2(275, 350), Color.Black);
+        _spriteBatch.End();
         base.Draw(gameTime);
     }
 
     public void actionOne() {
-        Console.WriteLine("Action One");
+        state = PlayerState.idle;
+        player.SetSprite(ezaelStillForwardSprite);
+        player.Reset();
+        
     }
     public void actionTwo() {
-        Console.WriteLine("Action Two");
+        state = PlayerState.idle;
+        player.SetSprite(ezaelRightSprite);
+        player.Reset();
     }
     public void actionThree() {
-        Console.WriteLine("Action Three");
+        state = PlayerState.moveUpDown;
+        player.SetSprite(ezaelStillForwardSprite);
+        player.Reset();
     }
     public void actionFour() {
-        Console.WriteLine("Action Four");
+        state = PlayerState.moveLeftRight;
+        player.SetSprite(ezaelLeftSprite);
+        player.Reset();
     }
 }

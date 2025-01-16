@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SourceFile>/Users/leocheng/Documents/Ohio State University/SP2025/INT CSE 3902/MonoGame Projects/SprintZero/Content/Fonts/arial.spritefont</SourceFile>
+  <SourceTime>2025-01-15T20:50:55.1988007-05:00</SourceTime>
+  <DestFile>/Users/leocheng/Documents/Ohio State University/SP2025/INT CSE 3902/MonoGame Projects/SprintZero/Content/bin/DesktopGL/Content/Fonts/arial.xnb</DestFile>
+  <DestTime>2025-01-15T20:54:19.1615282-05:00</DestTime>
+  <Importer>FontDescriptionImporter</Importer>
+  <ImporterTime>2024-08-16T13:05:56-04:00</ImporterTime>
+  <Processor>FontDescriptionProcessor</Processor>
+  <ProcessorTime>2024-08-16T13:05:56-04:00</ProcessorTime>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>

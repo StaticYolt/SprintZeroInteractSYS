@@ -48,12 +48,6 @@ namespace SprintZero.ConcreteClasses {
  
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            // int width = Texture.Width / Columns;
-            // int height = Texture.Height / Rows;
-            // int row = currentFrame / Columns;
-            // int column = currentFrame % Columns;
- 
-            // Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, Texture.Width / Columns, Texture.Height / Rows);
  
             spriteBatch.Begin();

@@ -6,8 +6,16 @@
   <SourceFiles>
     <File>/Users/leocheng/Documents/Ohio State University/SP2025/INT CSE 3902/MonoGame Projects/SprintZero/Content/EzaelSpriteSheet.png</File>
     <File>/Users/leocheng/Documents/Ohio State University/SP2025/INT CSE 3902/MonoGame Projects/SprintZero/Content/EzaelLeft.png</File>
+    <File>/Users/leocheng/Documents/Ohio State University/SP2025/INT CSE 3902/MonoGame Projects/SprintZero/Content/EzaelStillForwards.png</File>
+    <File>/Users/leocheng/Documents/Ohio State University/SP2025/INT CSE 3902/MonoGame Projects/SprintZero/Content/EzaelShootDown.png</File>
+    <File>/Users/leocheng/Documents/Ohio State University/SP2025/INT CSE 3902/MonoGame Projects/SprintZero/Content/EzaelRight.png</File>
+    <File>/Users/leocheng/Documents/Ohio State University/SP2025/INT CSE 3902/MonoGame Projects/SprintZero/Content/Fonts/arial.spritefont</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
